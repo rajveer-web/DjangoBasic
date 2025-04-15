@@ -20,7 +20,7 @@ def add(request):
         if form.is_valid():
             task = form.cleaned_data['task']
             tasks.append(task)
-            else
+        else:
             return render(request, "tasks/add.html",{
                 "form": form
             })   
