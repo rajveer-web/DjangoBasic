@@ -1,17 +1,10 @@
+{% extends "tasks/layout.html" %}        <!-- template inheritance -->
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>
-         Item
-        </title>
-        
-    </head>
-<body>
+{% block body %}
     <h1>Add Task</h1>
     <form>
         <input type="text" name="task">
         <input type="submit">
     </form>
-</body>
-</html>
+    <a href="{% url 'tasks:index' %}"> View tasks</a>
+{% endblock %}
