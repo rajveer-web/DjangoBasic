@@ -5,7 +5,7 @@ from django.urls import reverse
 
 # Create your views here.
 
-tasks = ["foo","bar","baz"]
+# tasks = ["foo","bar","baz"]
 
 class NewTaskForm(forms.Form):
     task =  forms.CharField(label="New Task")
@@ -13,8 +13,11 @@ class NewTaskForm(forms.Form):
 
 
 def index (request):
-    return render(request, 'tasks/index.html', {
-        'tasks': tasks})
+    if "tasks" not in request.session:
+        request.session["tasks"] = []
+        return render(request, "tasks/index.html", {
+            "tasks": request.session["tasks"]})
+    
 
 def add(request):
     if request.method == "POST":
